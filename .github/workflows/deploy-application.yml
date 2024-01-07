@@ -1,0 +1,27 @@
+name: 'Deploy application'
+on:
+  workflow_dispatch:
+    inputs:
+      webApplicationVersion:
+        description: 'Web application version'
+        required: true
+        default: 'latest'
+      backApplicationVersion:
+        description: 'Back application version'
+        required: true
+        default: 'latest'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build containers
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd ${{ secrets.PLATFORM_DIR }};
+            chmod u+x refresh-application.sh
+            ./refresh-application.sh  ${{ github.event.inputs.webApplicationVersion }} ${{ github.event.inputs.backApplicationVersion }}
