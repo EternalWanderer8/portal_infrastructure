@@ -1,6 +1,6 @@
 [submodule "web"]
 	path = web
-	url = https://github.com/TeamTells/portal_web
+	url = https://github.com/EternalWanderer8/portal_web
 [submodule "backend"]
 	path = backend
-	url = https://github.com/TeamTells/portal_back
+	url = https://github.com/EternalWanderer8/portal_back
