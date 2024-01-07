@@ -24,7 +24,7 @@ services:
       app_network:
 
   web:
-    image: docker-web:${WEB_APPLICATION_VERSION}
+    image: eternalwanderer/docker-web:${WEB_APPLICATION_VERSION}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.web.rule=Host(`${HOSTNAME:-localhost}`)"
@@ -38,7 +38,7 @@ services:
       app_network:
 
   backend:
-    image: docker-back:${BACK_APPLICATION_VERSION}
+    image: eternalwanderer/docker-back:${BACK_APPLICATION_VERSION}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.backend.rule=Host(`${HOSTNAME:-localhost}`) && PathPrefix(`/api`)"
