@@ -24,8 +24,7 @@ services:
       app_network:
 
   web:
-    build:
-      context: ${WEB_DIR:-../web}
+    image: docker-web:${WEB_APPLICATION_VERSION}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.web.rule=Host(`${HOSTNAME:-localhost}`)"
@@ -39,8 +38,7 @@ services:
       app_network:
 
   backend:
-    build:
-      context: ${BACKEND_DIR:-../backend}
+    image: docker-back:${BACK_APPLICATION_VERSION}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.backend.rule=Host(`${HOSTNAME:-localhost}`) && PathPrefix(`/api`)"
