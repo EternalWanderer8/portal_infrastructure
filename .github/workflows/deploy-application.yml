@@ -24,4 +24,4 @@ jobs:
           script: |
             cd ${{ secrets.PLATFORM_DIR }};
             chmod u+x refresh-application.sh
-            ./refresh-application.sh  ${{ github.event.inputs.webApplicationVersion }} ${{ github.event.inputs.backApplicationVersion }}
+            ./refresh-application.sh ${{ github.event.inputs.webApplicationVersion }} ${{ github.event.inputs.backApplicationVersion }}
